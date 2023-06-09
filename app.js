@@ -72,8 +72,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected successfully to Mongo!");
     }).catch((err) => {
-        console.log("Mongo Connection error!");
-        console.log(err);
+        console.log("Mongo Connection error!", err);
     });
 
 function wrapAsync(fn) {
@@ -111,7 +110,7 @@ app.get("/register", (req, res) => {
     res.render("register");
 });
 
-app.get("/secrets", wrapAsync(async (req, res) => {
+app.get("/secrets", wrapAsync(async (req, res, next) => {
     const usersWithSecret = await User.find({ secret: { $ne: null } });
     res.render("secrets", { usersWithSecret });
 }));
