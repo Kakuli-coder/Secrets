@@ -165,13 +165,9 @@ app.post("/login", (req, res, next) => {
     });
 });
 
-app.post("/logout", (req, res, next) => {
-    req.logout((err) => {
-        if (err) {
-            return next(err);
-        };
-        res.redirect("/");
-    });
+app.post('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
 });
 
 app.use((err, req, res, next) => {
