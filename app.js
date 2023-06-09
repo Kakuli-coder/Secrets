@@ -9,6 +9,7 @@ const session = require("cookie-session");
 const passport = require("passport");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const homeURL = "https://secrets-srl6.onrender.com";
 
 const app = express();
 
@@ -44,7 +45,7 @@ passport.deserializeUser(function (user, cb) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: `${homeURL}/auth/google/secrets`,
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
     function (accessToken, refreshToken, profile, cb) {
@@ -58,7 +59,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/secrets"
+    callbackURL: `${homeURL}/auth/facebook/secrets`
 },
     function (accessToken, refreshToken, profile, cb) {
         // console.log(profile);
