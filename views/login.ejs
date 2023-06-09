@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<section class="vh-100">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">Sign in</h3>
+            <form action="/login" method="POST">
+              <div class="form-group">
+                <input type="email" class="form-control form-control-lg" name="username" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-lg" name="password" placeholder="Password"
+                  required>
+              </div>
+              <button type="submit" class="btn btn-dark btn-lg btn-block">Login</button>
+            </form>
+
+            <hr class="my-4">
+
+            <a class="google-btn btn btn-lg btn-block mb-3" href="/auth/google">
+              <i class="fab fa-google mr-3"></i>
+              Sign in with Google
+            </a>
+            <a class="facebook-btn btn btn-lg btn-block btn-primary" href="/auth/facebook">
+              <i class="fab fa-facebook-f mr-3"></i>
+              Sign in with facebook
+            </a>
+
+            <br>
+
+              <p class="para-text">Don't have an account? <a href="/register">Create an account</a>.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
